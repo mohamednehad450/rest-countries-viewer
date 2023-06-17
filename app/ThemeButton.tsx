@@ -17,7 +17,7 @@ function ThemeToggle() {
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="icon icon-tabler icon-tabler-moon dark:stroke-none stroke-very-dark-blue dark:fill-white"
+        className="icon icon-tabler icon-tabler-moon dark:stroke-none stroke-very-dark-blue1 dark:fill-white"
         width="18"
         height="18"
         viewBox="0 0 24 24"
