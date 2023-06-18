@@ -7,9 +7,12 @@ function Navbar() {
       className={clsx(
         "w-full h-24",
         "shadow dark:shadow-none",
-        " px-8 md:px-16",
+        "px-8 md:px-20",
+        "sticky",
+        "top-0",
+        "z-50",
         "flex items-center justify-between",
-        "dark:bg-dark-blue"
+        "bg-white dark:bg-dark-blue"
       )}
     >
       <a href="/" className="font-extrabold text-lg sm:text-2xl ">
