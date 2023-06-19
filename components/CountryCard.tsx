@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { Country } from "@/data";
 import clsx from "clsx";
 import LabeledValue from "./LabeledValue";
+import { Country } from "./api";
 
 const formatNumber = (n: number): string => {
   const arr = String(n).split("");
@@ -33,9 +33,10 @@ const CountryCard: FC<CountryCardProps> = ({ country, onClick }) => {
     >
       <img
         src={country.flags.png}
-        width={"100%"}
-        className="h-40 w-full"
+        width={256}
+        height={160}
         alt={"Flag of " + country.name}
+        loading="lazy"
       />
       <div className="px-6 pt-6">
         <div className="text-lg font-extrabold">{country.name}</div>
