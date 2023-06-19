@@ -2,6 +2,7 @@ import clsx from "clsx";
 import "./globals.css";
 import { Nunito_Sans } from "next/font/google";
 import Navbar from "./Navbar";
+import QueryProvider from "@/components/QueryProvider";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -29,8 +30,10 @@ export default function RootLayout({
           "text-very-dark-blue"
         )}
       >
-        <Navbar />
-        {children}
+        <QueryProvider>
+          <Navbar />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );
