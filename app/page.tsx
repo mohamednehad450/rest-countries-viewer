@@ -1,5 +1,5 @@
 "use client";
-import CountryCard from "@/components/CountryCard";
+import CountryCard, { Skeleton } from "@/components/CountryCard";
 import RegionMenu from "@/components/RegionMenu";
 import SearchBar from "@/components/SearchBar";
 import { fetchCountries } from "@/components/api";
@@ -11,7 +11,7 @@ export default function Home() {
   const [query, setQuery] = useState<string>();
   const [filter, setFilter] = useState<string>();
 
-  const { data } = useQuery(
+  const { data, isLoading, isError, refetch } = useQuery(
     ["countries", filter],
     () => fetchCountries(filter),
     { keepPreviousData: true }
@@ -29,25 +29,54 @@ export default function Home() {
         <SearchBar onSearch={setQuery} />
         <RegionMenu value={filter} onChange={setFilter} />
       </section>
-      <section
-        className={clsx(
-          "py-8 md:px-0",
-          "gap-6 md:gap-20",
-          "grid place-items-center",
-          "xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1"
-        )}
-      >
-        {data
-          ?.filter(
-            ({ region, name }) =>
-              (!filter || region.includes(filter)) &&
-              (!query ||
-                name.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
-          )
-          .map((country) => {
-            return <CountryCard key={country.name} country={country} />;
-          })}
-      </section>
+      {isLoading ? (
+        <section
+          className={clsx(
+            "py-8 md:px-0",
+            "gap-6 md:gap-20",
+            "grid place-items-center",
+            "xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1"
+          )}
+        >
+          {[...new Array(8)].map((_, i) => (
+            <Skeleton key={i} />
+          ))}
+        </section>
+      ) : isError ? (
+        <section
+          className={clsx(
+            "py-8 md:px-0",
+            "gap-6 md:gap-20",
+            "grid place-items-center"
+          )}
+        >
+          <button
+            onClick={() => refetch()}
+            className="bg-white dark:bg-dark-blue h-10 w-32 rounded shadow dark:shadow-none font-extralight"
+          >
+            Try again
+          </button>
+        </section>
+      ) : (
+        <section
+          className={clsx(
+            "py-8 md:px-0",
+            "gap-6 md:gap-20",
+            "grid place-items-center",
+            "xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1"
+          )}
+        >
+          {data
+            ?.filter(
+              ({ name }) =>
+                !query ||
+                name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+            )
+            .map((country) => {
+              return <CountryCard key={country.name} country={country} />;
+            })}
+        </section>
+      )}
     </main>
   );
 }
