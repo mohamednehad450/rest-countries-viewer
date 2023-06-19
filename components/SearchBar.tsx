@@ -13,7 +13,7 @@ const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
 
   useEffect(() => {
     onSearch(debouncedSearch);
-  }, [debouncedSearch]);
+  }, [debouncedSearch, onSearch]);
 
   return (
     <span
