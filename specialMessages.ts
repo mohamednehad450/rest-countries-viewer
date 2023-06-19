@@ -6,5 +6,7 @@ const specialMessages: any = {
   ISL: "Steve & Mike Live Here!",
   GBR: "Nathen & Tyler Live Here!",
   CHE: "Ronky Lives Here!",
+  SAU: "Nehad & Azza & Ahmad Live Here!",
+  EGY: "Wezza & Motasm & Nesma Live Here!",
 };
 export default specialMessages;
