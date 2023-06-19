@@ -3,6 +3,7 @@ import CountryButton from "@/components/CountryButton";
 import LabeledValue from "@/components/LabeledValue";
 import { FullCountry } from "@/components/api";
 import { formatNumber } from "@/components/utils";
+import specialMessages from "@/specialMessages";
 import clsx from "clsx";
 import { FC } from "react";
 
@@ -16,11 +17,18 @@ const CountryPage: FC<{ country: FullCountry }> = ({ country }) => {
         "flex flex-col md:gap-20"
       )}
     >
-      <BackButton />
+      <div className="flex flex-col md:flex-row">
+        <BackButton />
+        {specialMessages[country.alpha3Code] ? (
+          <span className="pt-4 mx-auto text-center text-xl font-semibold text-red-600">
+            {specialMessages[country.alpha3Code]}
+          </span>
+        ) : null}
+      </div>
       <section
         className={clsx(
           "flex flex-col md:items-center xl:flex-row",
-          "py-8 w-full md:h-[400px]"
+          "py-8 w-full md:h-[420px]"
         )}
       >
         <div className="xl:w-1/2 max-w-2xl">

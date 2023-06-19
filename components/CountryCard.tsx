@@ -3,6 +3,7 @@ import clsx from "clsx";
 import LabeledValue from "./LabeledValue";
 import { Country } from "./api";
 import { formatNumber } from "./utils";
+import specialMessages from "@/specialMessages";
 
 interface CountryCardProps {
   country: Country;
@@ -37,7 +38,15 @@ const CountryCard: FC<CountryCardProps> = ({ country, onClick }) => {
         alt={"Flag of " + country.name}
         loading="lazy"
       />
-      <div className="px-6 pt-6">
+      <span className="pt-2 text-center font-semibold text-red-600">
+        {specialMessages[country.alpha3Code]}
+      </span>
+      <div
+        className={clsx(
+          "px-6",
+          specialMessages[country.alpha3Code] ? "pt-2" : "p-6"
+        )}
+      >
         <div className="text-lg font-extrabold">{country.name}</div>
         <div className="flex flex-col pt-2 text-sm">
           <LabeledValue
