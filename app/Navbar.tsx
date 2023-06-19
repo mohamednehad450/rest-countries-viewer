@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import ThemeToggle from "./ThemeButton";
+import Link from "next/link";
 
 function Navbar() {
   return (
@@ -15,9 +16,9 @@ function Navbar() {
         "bg-white dark:bg-dark-blue"
       )}
     >
-      <a href="/" className="font-extrabold text-lg sm:text-2xl ">
+      <Link href="/" className="font-extrabold text-lg sm:text-2xl ">
         Where in the world?
-      </a>
+      </Link>
       <ThemeToggle />
     </nav>
   );
