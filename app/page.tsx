@@ -2,13 +2,21 @@
 import CountryCard from "@/components/CountryCard";
 import RegionMenu from "@/components/RegionMenu";
 import SearchBar from "@/components/SearchBar";
-import data from "@/data";
+import { fetchCountries } from "@/components/api";
 import clsx from "clsx";
 import { useState } from "react";
+import { useQuery } from "react-query";
 
 export default function Home() {
   const [query, setQuery] = useState<string>();
   const [filter, setFilter] = useState<string>();
+
+  const { data } = useQuery(
+    ["countries", filter],
+    () => fetchCountries(filter),
+    { keepPreviousData: true }
+  );
+
   return (
     <main className={clsx("p-4 md:px-20 md:py-8", "max-w-[1440px]", "mx-auto")}>
       <section
@@ -29,9 +37,8 @@ export default function Home() {
           "xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1"
         )}
       >
-        {/* This will be replaced with a mock api with react-query */}
         {data
-          .filter(
+          ?.filter(
             ({ region, name }) =>
               (!filter || region.includes(filter)) &&
               (!query ||
