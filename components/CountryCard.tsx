@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import clsx from "clsx";
 import LabeledValue from "./LabeledValue";
 import { Country } from "./api";
@@ -17,6 +17,11 @@ interface CountryCardProps {
 }
 
 const CountryCard: FC<CountryCardProps> = ({ country, onClick }) => {
+  // HACK: Fixes lazy loading in firefox
+  const [loadImg, setLoadImg] = useState(false);
+  useEffect(() => {
+    setLoadImg(true);
+  }, []);
   return (
     <button
       onClick={() => onClick && onClick(country)}
@@ -32,9 +37,10 @@ const CountryCard: FC<CountryCardProps> = ({ country, onClick }) => {
       )}
     >
       <img
-        src={country.flags.png}
+        src={loadImg ? country.flags.png : ""}
         width={256}
         height={160}
+        className={"w-64 h-40"}
         alt={"Flag of " + country.name}
         loading="lazy"
       />
