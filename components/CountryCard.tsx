@@ -2,14 +2,7 @@ import { FC, useEffect, useState } from "react";
 import clsx from "clsx";
 import LabeledValue from "./LabeledValue";
 import { Country } from "./api";
-
-const formatNumber = (n: number): string => {
-  const arr = String(n).split("");
-  for (let i = arr.length - 4; i >= 0; i -= 3) {
-    arr[i] = arr[i] + ",";
-  }
-  return arr.join("");
-};
+import { formatNumber } from "./utils";
 
 interface CountryCardProps {
   country: Country;
