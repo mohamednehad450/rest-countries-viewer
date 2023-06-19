@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { fetchCountries, fetchCountry } from "@/components/api";
 import CountryPage from "./CountryPage";
 
@@ -9,11 +10,20 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({
-  params,
-}: {
+type Props = {
   params: { country: string };
-}) {
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const id = params.country;
+
+  const country = await fetchCountry(id);
+
+  return {
+    title: country.name,
+  };
+}
+export default async function Page({ params }: Props) {
   const country = await fetchCountry(params.country);
   return <CountryPage country={country} />;
 }
