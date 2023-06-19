@@ -2,7 +2,7 @@ import { Menu, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { FC, Fragment } from "react";
 
-const regions = ["Africa", "America", "Asia", "Europe", "Oceania"] as const;
+const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"] as const;
 
 interface RegionMenuProps {
   value?: string;
@@ -30,7 +30,7 @@ const RegionMenu: FC<RegionMenuProps> = ({ value, onChange }) => {
           width="18"
           height="18"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          strokeWidth="2"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
