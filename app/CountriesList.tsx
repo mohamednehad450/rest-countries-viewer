@@ -45,7 +45,7 @@ export default function CountriesList({ countries }: { countries: Country[] }) {
               <CountryCard
                 key={country.name}
                 country={country}
-                onClick={({ alpha3Code }) => router.push(alpha3Code)}
+                onClick={({ alpha3Code }) => router.push("/" + alpha3Code)}
               />
             );
           })}

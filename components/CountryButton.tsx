@@ -10,7 +10,7 @@ const CountryButton: FC<{ country: { alpha3Code: string; name: string } }> = ({
   return (
     <button
       key={country.alpha3Code}
-      onClick={() => router.push(country.alpha3Code)}
+      onClick={() => router.push("/" + country.alpha3Code)}
       className={clsx(
         "bg-white dark:bg-dark-blue",
         "h-10 w-28 md:w-32 px-3",
