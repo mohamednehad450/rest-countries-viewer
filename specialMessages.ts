@@ -1,6 +1,6 @@
 const specialMessages: any = {
   ARE: "Nada & Meguid Live Here!",
-  NLD: "Alex & Ana & Ive Live Here!",
+  NLD: "Alex & Ana & Ivy Live Here!",
   AUT: "Niklas Lives Here!",
   SWE: "Johan & Maria Live Here!",
   ISL: "Steve & Mike Live Here!",
