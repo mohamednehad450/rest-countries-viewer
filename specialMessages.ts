@@ -8,6 +8,6 @@ const specialMessages: any = {
   CHE: "Ronky Lives Here!",
   SAU: "Nehad & Azza & Ahmad Live Here!",
   EGY: "Wezza & Motasm & Nesma Live Here!",
-  USD: "Saeed Live's Here! ❤️"
+  USA: "Saeed Live's Here! ❤️"
 };
 export default specialMessages;
